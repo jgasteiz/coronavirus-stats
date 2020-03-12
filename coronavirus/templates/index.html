@@ -9,8 +9,9 @@
 <body>
     <div class="container-fluid mt-2 mb-2">
         <h1>COVID-19 Coronavirus Outbreak</h1>
+        <p>This is a lightweight version of <a target="_blank" href="https://www.worldometers.info/coronavirus/">https://www.worldometers.info/coronavirus/</a></p>
         <p>{{ last_updated }}</p>
-        {{ content|safe }}
+        {{ html_table|safe }}
     </div>
 </body>
 </html>

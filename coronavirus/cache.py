@@ -4,12 +4,12 @@ import json
 DATE_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
 
 
-def cache_data(html, last_updated):
+def cache_data(html_table, last_updated):
     with open("db.json", "w") as f:
         f.write(
             json.dumps(
                 {
-                    "html": html,
+                    "html_table": html_table,
                     "last_updated": last_updated,
                     "updated_at": datetime.datetime.now().strftime(DATE_TIME_FORMAT),
                 }
@@ -25,11 +25,11 @@ def get_cache():
         return None
 
 
-def get_cache_if_recent():
+def is_cache_recent():
     cached_data = get_cache()
     if not cached_data:
-        return None
+        return False
     updated_at = datetime.datetime.strptime(cached_data["updated_at"], DATE_TIME_FORMAT)
     if updated_at < datetime.datetime.now() - datetime.timedelta(minutes=5):
-        return None
-    return cached_data
+        return False
+    return True
