@@ -26,7 +26,7 @@ def _cache_website_data():
         # Last updated: next sibling of the element with id page-top.
         last_updated = tree.get_element_by_id("page-top").getnext().text
         # Table of stats per country.
-        table = tree.get_element_by_id("main_table_countries")
+        table = tree.get_element_by_id("main_table_countries_today")
         # Add a bootstrap table-responsive class to the table.
         table.attrib["class"] = "{} table-responsive".format(table.attrib["class"])
         html_table = html.tostring(table).decode("utf-8")
